@@ -1,0 +1,7 @@
+- create a bounty
+- store all bounties
+- display all bounties
+- repeat above but location-tagged
+
+
+1. make react ui display a hardcoded list of bounties
