@@ -4,4 +4,7 @@
 - repeat above but location-tagged
 
 
-1. make react ui display a hardcoded list of bounties
+1. make react ui display a hardcoded list of bounties - DONE
+2. make list of bounties not hardcoded - DONE
+3. make "create a bounty" page
+4. bounties should be clickable, create "attach evidence" screen
