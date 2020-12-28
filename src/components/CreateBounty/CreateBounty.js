@@ -5,7 +5,11 @@ import styles from './CreateBounty.module.css';
 class CreateBounty extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [], formTextMission: '', formTextCoords: ''};
+    this.state = { 
+      items: [
+        {mission: 'fry egg', coords: '4321,543'}
+      ],
+       formTextMission: '', formTextCoords: ''};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -13,7 +17,7 @@ class CreateBounty extends React.Component {
   render() {
     return (
       <div>
-        <h3>Your Bounties</h3>
+        <h3>Active bounties, 1mi radius:</h3>
         <TodoList items={this.state.items} />
         <form onSubmit={this.handleSubmit}>
           <input
@@ -50,8 +54,8 @@ class CreateBounty extends React.Component {
 
     //construct new item here
     const newItem = {
-      formTextMission: this.state.formTextMission,
-      formTextCoords: this.state.formTextCoords
+      mission: this.state.formTextMission,
+      coords: this.state.formTextCoords
     };
 
     //insert new item, clear form text
@@ -68,7 +72,7 @@ class TodoList extends React.Component {
     return (
       <ul>
         {this.props.items.map(item => (
-          <li>{item.formTextMission} {item.formTextCoords}</li>
+          <li>{item.mission} {item.coords}</li>
         ))}
       </ul>
     );
