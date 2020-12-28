@@ -1,4 +1,4 @@
 - make react ui display a hardcoded list of bounties - DONE
 - make "create a bounty" function - DONE
-- bounties should be clickable, create "attach evidence" screen
+- bounties should be clickable, create "attach evidence" screen - IP
 - bounties should be viewable on a google map

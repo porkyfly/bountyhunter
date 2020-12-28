@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import Bounty from './components/Bounty/Bounty';
 
 
 class App extends Component {
@@ -8,10 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: [
-        {mission: 'fry egg', coords: '39.234,160.442'}
-      ],
-       formTextMission: '', formTextCoords: ''};
+      bounties: [], formTextMission: '', formTextCoords: ''};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -23,7 +21,7 @@ class App extends Component {
           <h1>Welcome, Bounty Hunter</h1>
           <img src={logo} className="App-logo" alt="logo" />
           <h3>Active bounties, 1mi radius:</h3>
-          <TodoList items={this.state.items} />
+          <TodoList items={this.state.bounties} />
           <form onSubmit={this.handleSubmit}>
             <input
               name="formTextMission"
@@ -58,15 +56,16 @@ class App extends Component {
       return;
     }
 
-    //construct new item here
-    const newItem = {
+    //construct new props here
+    const newProps = {
       mission: this.state.formTextMission,
       coords: this.state.formTextCoords
     };
+    var bounty = new Bounty(newProps);
 
-    //insert new item, clear form text
+    //insert new bounty, clear form text
     this.setState(state => ({
-      items: state.items.concat(newItem),
+      bounties: state.bounties.concat(bounty),
       formTextMission: '',
       formTextCoords: ''
     }));
@@ -74,12 +73,15 @@ class App extends Component {
 
 }
 
+
+//this.props.items = this.state.bounties
+//item = bounty
 class TodoList extends Component {
   render() {
     return (
       <ul>
         {this.props.items.map(item => (
-          <li>{item.mission} {item.coords}</li>
+          <li>{item.state.mission} {item.state.coords}</li>
         ))}
       </ul>
     );
