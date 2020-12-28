@@ -1,10 +1,7 @@
-- create a bounty
-- store all bounties
-- display all bounties
-- repeat above but location-tagged
 
 
-1. make react ui display a hardcoded list of bounties - DONE
-2. make list of bounties not hardcoded - DONE
-3. make "create a bounty" page
-4. bounties should be clickable, create "attach evidence" screen
+
+- make react ui display a hardcoded list of bounties - DONE
+- make "create a bounty" function - DONE
+- bounties should be clickable, create "attach evidence" screen
+- bounties should be viewable on a google map
