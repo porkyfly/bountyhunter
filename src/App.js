@@ -2,6 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 import Bounty from './components/Bounty/Bounty';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 
 class App extends Component {
@@ -19,9 +26,30 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>Welcome, Bounty Hunter</h1>
-          <img src={logo} className="App-logo" alt="logo" />
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h3>Active bounties, 1mi radius:</h3>
-          <TodoList items={this.state.bounties} />
+
+
+          <Router>
+            <div>
+              {/* render list */}
+              <ul>
+                {this.state.bounties.map(bounty => (
+                  <li>
+                      <Link className="App-link" to="/bounty">{bounty.props.mission} {bounty.props.coords}</Link>
+                  </li>
+                ))}
+              </ul>
+
+              <Route path="/bounty">
+                <Bounty />
+              </Route>
+
+            </div>
+          </Router>
+          
+
+
           <form onSubmit={this.handleSubmit}>
             <input
               name="formTextMission"
@@ -37,6 +65,8 @@ class App extends Component {
               Add Bounty
             </button>
           </form>
+
+
         </header>
       </div>
     );
@@ -73,20 +103,6 @@ class App extends Component {
 
 }
 
-
-//this.props.items = this.state.bounties
-//item = bounty
-class TodoList extends Component {
-  render() {
-    return (
-      <ul>
-        {this.props.items.map(item => (
-          <li>{item.state.mission} {item.state.coords}</li>
-        ))}
-      </ul>
-    );
-  }
-}
 
 export default App;
 
