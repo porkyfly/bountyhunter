@@ -36,7 +36,7 @@ class App extends Component {
               <ul>
                 {this.state.bounties.map(bounty => (
                   <li>
-                      <Link className="App-link" to="/bounty">{bounty.mission} {bounty.amount}</Link>
+                      <Link className="App-link" to="/bounty">{bounty.mission} ${bounty.amount}</Link>
                   </li>
                 ))}
               </ul>
