@@ -16,7 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      bounties: [], formTextMission: '', formTextCoords: ''};
+      bounties: [], formTextMission: '', formTextAmount: ''};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -36,7 +36,7 @@ class App extends Component {
               <ul>
                 {this.state.bounties.map(bounty => (
                   <li>
-                      <Link className="App-link" to="/bounty">{bounty.props.mission} {bounty.props.coords}</Link>
+                      <Link className="App-link" to="/bounty">{bounty.mission} {bounty.amount}</Link>
                   </li>
                 ))}
               </ul>
@@ -57,9 +57,10 @@ class App extends Component {
               value={this.state.formTextMission}
             />
             <input
-              name="formTextCoords"
+              type="number"
+              name="formTextAmount"
               onChange={this.handleInputChange}
-              value={this.state.formTextCoords}
+              value={this.state.formTextAmount}
             />
             <button>
               Add Bounty
@@ -82,22 +83,22 @@ class App extends Component {
   handleSubmit(e) {
     //edge case handling
     e.preventDefault();
-    if (this.state.formTextMission.length === 0 || this.state.formTextCoords.length === 0) {
+    if (this.state.formTextMission.length === 0 || this.state.formTextAmount.length === 0) {
       return;
     }
 
     //construct new props here
-    const newProps = {
+    const bounty = {
       mission: this.state.formTextMission,
-      coords: this.state.formTextCoords
+      amount: this.state.formTextAmount,
+      evidence: ''
     };
-    var bounty = new Bounty(newProps);
 
     //insert new bounty, clear form text
     this.setState(state => ({
       bounties: state.bounties.concat(bounty),
       formTextMission: '',
-      formTextCoords: ''
+      formTextAmount: ''
     }));
   }
 

@@ -14,7 +14,6 @@ class Bounty extends Component {
   render() {
     return (
       <div className={styles.Bounty}>
-        {this.props.mission} {this.props.coords}
         Submit Completion Evidence Here
       </div>
     )
