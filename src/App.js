@@ -1,25 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
-import Bounty from './components/Bounty/Bounty';
+import Evidence from './components/Bounty/Evidence';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
-
+import MyMap from './Map.js';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { Marker } from '@react-google-maps/api';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = { 
-      bounties: [], formTextMission: '', formTextAmount: ''};
+      bounties: [], formTextMission: '', formTextAmount: '', formTextLat: '37.7749', formTextLong: '-122.4194'};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  containerStyle = {
+    width: '800px',
+    height: '600px'
+  };
+  
+  center = {
+    lat: 37.7749,
+    lng: -122.4194
+  };
+
 
   render() {
     return (
@@ -36,20 +48,27 @@ class App extends Component {
               <ul>
                 {this.state.bounties.map(bounty => (
                   <li>
-                      <Link className="App-link" to="/bounty">{bounty.mission} ${bounty.amount}</Link>
+                      <Link className="App-link" to="/evidence">{bounty.mission} ${bounty.amount}</Link>
                   </li>
                 ))}
               </ul>
 
-              <Route path="/bounty">
-                <Bounty />
+              {/* route paths */}
+              <Route path="/evidence">
+                <Evidence />
+              </Route>
+              <Route path="/map">
+                <MyMap />
               </Route>
 
             </div>
           </Router>
+
+          {/* render map */}
+          <MyMap bounties={this.state.bounties}/>
+
           
-
-
+          {/* form input */}
           <form onSubmit={this.handleSubmit}>
             <input
               name="formTextMission"
@@ -61,6 +80,18 @@ class App extends Component {
               name="formTextAmount"
               onChange={this.handleInputChange}
               value={this.state.formTextAmount}
+            />
+            <input
+              type="number"
+              name="formTextLat"
+              onChange={this.handleInputChange}
+              value={this.state.formTextLat}
+            />
+            <input
+              type="number"
+              name="formTextLong"
+              onChange={this.handleInputChange}
+              value={this.state.formTextLong}
             />
             <button>
               Add Bounty
@@ -91,6 +122,8 @@ class App extends Component {
     const bounty = {
       mission: this.state.formTextMission,
       amount: this.state.formTextAmount,
+      lat: Number(this.state.formTextLat),
+      long: Number(this.state.formTextLong),
       evidence: ''
     };
 
