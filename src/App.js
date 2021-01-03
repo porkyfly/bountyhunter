@@ -38,8 +38,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>Welcome, Bounty Hunter</h1>
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h3>Active bounties, 1mi radius:</h3>
+          <img src={logo} className="App-logo" alt="logo" />
+          <h3>CHOOSE. YOUR. BOUNTY:</h3>
 
 
           <Router>
