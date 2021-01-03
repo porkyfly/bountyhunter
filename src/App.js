@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
-import Evidence from './components/Bounty/Evidence';
+import Evidence from './components/Evidence/Evidence';
 import {
   BrowserRouter as Router,
   Switch,
