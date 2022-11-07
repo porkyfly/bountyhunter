@@ -4,34 +4,21 @@ import React, { Component } from 'react';
 import Evidence from './components/Evidence/Evidence';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link
 } from "react-router-dom";
 import MyMap from './Map.js';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import { Marker } from '@react-google-maps/api';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = { 
-      bounties: [], formTextMission: '', formTextAmount: '', formTextLat: '37.7749', formTextLong: '-122.4194'};
+      bounties: [], formTextMission: '', formTextAmount: '', formTextLat: '38.8814', formTextLong: '-77.1098'};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  containerStyle = {
-    width: '800px',
-    height: '600px'
-  };
   
-  center = {
-    lat: 37.7749,
-    lng: -122.4194
-  };
-
 
   render() {
     return (
@@ -55,9 +42,6 @@ class App extends Component {
               {/* route paths */}
               <Route path="/evidence">
                 <Evidence />
-              </Route>
-              <Route path="/map">
-                <MyMap />
               </Route>
 
             </div>
