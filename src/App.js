@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+import logo from './monopoly.png';
 import './App.css';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Evidence from './components/Evidence/Evidence';
 import {
   BrowserRouter as Router,
@@ -36,7 +36,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
           <h1>Welcome, Bounty Hunter</h1>
           <img src={logo} className="App-logo" alt="logo" />
           <h3>CHOOSE. YOUR. BOUNTY:</h3>
@@ -99,7 +98,6 @@ class App extends Component {
           </form>
 
 
-        </header>
       </div>
     );
   }

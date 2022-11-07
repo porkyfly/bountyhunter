@@ -9,6 +9,9 @@ class Evidence extends Component {
       evidence: ''
     }
   }
+
+
+
   //this should be the submit evidence screen
   render() {
     return (
