@@ -11,10 +11,39 @@ import MyMap from './Map.js';
 
 class App extends Component {
 
+  startingBounties = 
+    [
+      {
+        mission: "buy me a mcrib",
+        amount: 420,
+        lat: 38.8824,
+        long: -77.1078
+      },
+      {
+        mission: "let me pee in your bathroom",
+        amount: 5,
+        lat: 38.8844,
+        long: -77.1072
+      },
+      {
+        mission: "take a pic of the street parking situation",
+        amount: 2,
+        lat: 38.8874,
+        long: -77.1062
+      }
+    ]
+    
+  
+
   constructor(props) {
     super(props);
     this.state = { 
-      bounties: [], formTextMission: '', formTextAmount: '', formTextLat: '38.8814', formTextLong: '-77.1098'};
+      bounties: this.startingBounties, 
+      formTextMission: '', 
+      formTextAmount: '', 
+      formTextLat: '38.8814', 
+      formTextLong: '-77.1098'
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -26,7 +55,6 @@ class App extends Component {
           <h1>Welcome, Bounty Hunter</h1>
           <img src={logo} className="App-logo" alt="logo" />
           <h3>choose your bounty:</h3>
-
           <Router>
             <div>
               {/* render list */}
@@ -105,7 +133,6 @@ class App extends Component {
       amount: this.state.formTextAmount,
       lat: Number(this.state.formTextLat),
       long: Number(this.state.formTextLong),
-      evidence: ''
     };
 
     //insert new bounty, clear form text
