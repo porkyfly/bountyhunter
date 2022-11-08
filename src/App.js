@@ -25,8 +25,7 @@ class App extends Component {
       <div className="App">
           <h1>Welcome, Bounty Hunter</h1>
           <img src={logo} className="App-logo" alt="logo" />
-          <h3>CHOOSE. YOUR. BOUNTY:</h3>
-
+          <h3>choose your bounty:</h3>
 
           <Router>
             <div>

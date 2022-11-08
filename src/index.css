@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'nightforest';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +8,31 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'nightforest';
+  src: local('nightforest'), url(./fonts/NightForest.otf) format('opentype');
+}
+
+
+@font-face {
+  font-family: 'bistern';
+  src: local('bistern'), url(./fonts/Bistern.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'metalsmith';
+  src: local('metalsmith'), url(./fonts/Metalsmith.otf) format('opentype');
+}
+
+
+@font-face {
+  font-family: 'patched';
+  src: local('patched'), url(./fonts/Patched.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'texasmud';
+  src: local('texasmud'), url(./fonts/TexasMud.ttf) format('opentype');
 }
