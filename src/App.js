@@ -9,7 +9,7 @@ import {
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import BaseMap from './components/BaseMap/BaseMap';
+import MapView from './components/BaseMap/BaseMap';
 import Submit from './components/Submit/Submit';
 import Home from './components/Home/Home';
 
@@ -49,7 +49,7 @@ class App extends Component {
 
         <Routes>
           <Route path="/home" element={<Home data={this.startingBounties} />} />
-          <Route path="/map" element={<BaseMap data={this.startingBounties} />} />
+          <Route path="/map" element={<MapView data={this.startingBounties} />} />
           <Route path="/submit" element={<Submit data={this.startingBounties} />} />
         </Routes>
 

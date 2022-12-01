@@ -3,8 +3,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '1100px',
-  height: '500px'
+  width: '1400px',
+  height: '800px'
 };
 //38.8814358283456, -77.10983118175007
 const center = {
@@ -12,7 +12,7 @@ const center = {
   lng: -77.1098
 };
 
-function BaseMap(props) {
+function MapView(props) {
   // const [map, setMap] = React.useState(null)
   return (
       <LoadScript
@@ -37,4 +37,4 @@ function BaseMap(props) {
 
 
 
-export default BaseMap;
+export default MapView;
