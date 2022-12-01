@@ -1,147 +1,85 @@
 import logo from './monopoly.png';
 import './App.css';
 import React, { Component } from 'react';
-import Evidence from './components/Evidence/Evidence';
 import {
-  BrowserRouter as Router,
+  Routes, //replaces "Switch" used till v5
   Route,
-  Link
 } from "react-router-dom";
-import MyMap from './Map.js';
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import BaseMap from './components/BaseMap/BaseMap';
+import Submit from './components/Submit/Submit';
+import Home from './components/Home/Home';
 
 class App extends Component {
 
-  startingBounties = 
-    [
-      {
-        mission: "buy me a mcrib",
-        amount: 420,
-        lat: 38.8824,
-        long: -77.1078
-      },
-      {
-        mission: "let me pee in your bathroom",
-        amount: 5,
-        lat: 38.8844,
-        long: -77.1072
-      },
-      {
-        mission: "take a pic of the street parking situation",
-        amount: 2,
-        lat: 38.8874,
-        long: -77.1062
-      }
-    ]
-    
-  
+  startingBounties =
+  [
+    {
+      mission: "buy me a mcrib",
+      amount: 420,
+      lat: 38.8824,
+      long: -77.1078,
+      expiry: 2
+    },
+    {
+      mission: "let me pee in your bathroom",
+      amount: 5,
+      lat: 38.8844,
+      long: -77.1072,
+      expiry: 5
+    },
+    {
+      mission: "take a pic of the street parking situation",
+      amount: 2,
+      lat: 38.8874,
+      long: -77.1062,
+      expiry: 15
+    }
+  ]
 
-  constructor(props) {
-    super(props);
-    this.state = { 
-      bounties: this.startingBounties, 
-      formTextMission: '', 
-      formTextAmount: '', 
-      formTextLat: '38.8814', 
-      formTextLong: '-77.1098'
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
+  arr = [1,2,3,4]
+
 
   render() {
     return (
       <div className="App">
-          <h1>Welcome, Bounty Hunter</h1>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h3>choose your bounty:</h3>
-          <Router>
-            <div>
-              {/* render list */}
-              <ul>
-                {this.state.bounties.map(bounty => (
-                  <li>
-                      <Link className="App-link" to="/evidence">{bounty.mission} ${bounty.amount}</Link>
-                  </li>
-                ))}
-              </ul>
 
-              {/* route paths */}
-              <Route path="/evidence">
-                <Evidence />
-              </Route>
+        <Routes>
+          <Route path="/home" element={<Home data={this.startingBounties} />} />
+          <Route path="/map" element={<BaseMap data={this.startingBounties} />} />
+          <Route path="/submit" element={<Submit data={this.startingBounties} />} />
+        </Routes>
 
-            </div>
-          </Router>
 
-          {/* render map */}
-          <MyMap bounties={this.state.bounties}/>
-
-          
-          {/* form input */}
-          <form onSubmit={this.handleSubmit}>
-            <input
-              name="formTextMission"
-              onChange={this.handleInputChange}
-              value={this.state.formTextMission}
-            />
-            <input
-              type="number"
-              name="formTextAmount"
-              onChange={this.handleInputChange}
-              value={this.state.formTextAmount}
-            />
-            <input
-              type="number"
-              name="formTextLat"
-              onChange={this.handleInputChange}
-              value={this.state.formTextLat}
-            />
-            <input
-              type="number"
-              name="formTextLong"
-              onChange={this.handleInputChange}
-              value={this.state.formTextLong}
-            />
-            <button>
-              Add Bounty
-            </button>
-          </form>
-
+        <Navbar fixed="top" bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand href="#home">
+              <img
+                alt=""
+                src={logo}
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{' '}
+              BountyHunter
+            </Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/map">Map View</Nav.Link>
+              <Nav.Link href="/submit">Drop a Bounty</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
 
       </div>
     );
   }
 
 
-  handleInputChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
 
-  handleSubmit(e) {
-    //edge case handling
-    e.preventDefault();
-    if (this.state.formTextMission.length === 0 || this.state.formTextAmount.length === 0) {
-      return;
-    }
-
-    //construct new props here
-    const bounty = {
-      mission: this.state.formTextMission,
-      amount: this.state.formTextAmount,
-      lat: Number(this.state.formTextLat),
-      long: Number(this.state.formTextLong),
-    };
-
-    //insert new bounty, clear form text
-    this.setState(state => ({
-      bounties: state.bounties.concat(bounty),
-      formTextMission: '',
-      formTextAmount: ''
-    }));
-  }
 
 }
 
