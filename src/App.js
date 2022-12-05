@@ -9,7 +9,7 @@ import {
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import MapView from './components/BaseMap/BaseMap';
+import MapView from './components/MapView/MapView';
 import Submit from './components/Submit/Submit';
 import Home from './components/Home/Home';
 
