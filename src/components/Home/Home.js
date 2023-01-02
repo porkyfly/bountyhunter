@@ -23,7 +23,8 @@ function Home() {
               <Card.Text>
                 {bounty.mission} ${bounty.amount}
               </Card.Text>
-              <Button variant="primary">Collect</Button>
+              <Button variant="primary">collect</Button>
+              <Button variant="primary">view on map</Button>
             </Card.Body>
           </Card>
         ))}

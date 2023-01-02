@@ -23,9 +23,10 @@ function Submit() {
   const [inputField, setinputField] = useState(
     {
       mission: 'sample bounty',
-      amount: 0,
+      amount: 1,
       lat: center.lat,
-      long: center.lng
+      long: center.lng,
+      expiry: -1
     }
   );
 
@@ -49,6 +50,7 @@ function Submit() {
       amount: inputField.amount,
       lat: inputField.lat,
       long: inputField.long,
+      expiry: inputField.expiry
     };
 
     //insert bounty into redux store
@@ -59,7 +61,8 @@ function Submit() {
       lat: center.lat,
       long: center.lng,
       mission: '',
-      amount: ''
+      amount: '',
+      expiry: -1
     })
 
   }
@@ -92,32 +95,32 @@ function Submit() {
       </LoadScript>
 
       <form onSubmit={handleSubmit}>
-        <input
-          name="mission"
-          onChange={handleInputChange}
-          value={inputField.mission}
-        />
-        <input
-          type="number"
-          name="amount"
-          onChange={handleInputChange}
-          value={inputField.amount}
-          step="any"
-        />
-        <input
-          type="number"
-          name="lat"
-          onChange={handleInputChange}
-          value={inputField.lat}
-          step="any"
-        />
-        <input
-          type="number"
-          name="long"
-          onChange={handleInputChange}
-          value={inputField.long}
-          step="any"
-        />
+        <label>
+          Mission:
+          <input
+            name="mission"
+            onChange={handleInputChange}
+            value={inputField.mission}
+          />
+        </label>
+        <label>
+          Reward
+          <input
+            type="number"
+            name="amount"
+            onChange={handleInputChange}
+            value={inputField.amount}
+          />
+        </label>
+        <label>
+          Expiry
+          <input
+            type="number"
+            name="expiry"
+            onChange={handleInputChange}
+            value={inputField.expiry}
+          />
+        </label>
         <button>
           Add Bounty
         </button>
