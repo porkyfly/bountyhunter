@@ -24,8 +24,8 @@ function Submit() {
     {
       mission: 'sample bounty',
       amount: 0,
-      lat: 38.8814,
-      long: -77.1098
+      lat: center.lat,
+      long: center.lng
     }
   );
 
@@ -53,6 +53,14 @@ function Submit() {
 
     //insert bounty into redux store
     dispatch(addBounty(bounty))
+
+    //reset input
+    setinputField( {
+      lat: center.lat,
+      long: center.lng,
+      mission: '',
+      amount: ''
+    })
 
   }
 

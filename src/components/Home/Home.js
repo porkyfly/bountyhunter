@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 function Home() {
 
-  const bounties = useSelector((state) => state.bounty.bounties)
+  const bounties = useSelector((state) => state.bounties)
 
   return (
       <div className="Bounties">
