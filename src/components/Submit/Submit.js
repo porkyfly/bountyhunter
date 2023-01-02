@@ -3,9 +3,8 @@ import styles from './Submit.module.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addBounty } from '../../bountySlice';
-
 
 
 function Submit() {
@@ -118,10 +117,6 @@ function Submit() {
     </div>
   )
 }
-
-
-
-
 
 
 

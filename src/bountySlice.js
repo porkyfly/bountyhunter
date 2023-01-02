@@ -6,7 +6,7 @@ export const bountySlice = createSlice({
       bounties:
         [
           {
-            mission: "buy me a mcrib",
+            mission: "buy me a mcrib2",
             amount: 420,
             lat: 38.8824,
             long: -77.1078,
